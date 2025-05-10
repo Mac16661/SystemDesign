@@ -17,8 +17,8 @@ class Vehicle{
         VehicleType type;
     public:
         Vehicle(string name, VehicleType type);
-        string virtual getName() = 0;
-        VehicleType virtual getType() = 0;
+        virtual string getName() = 0;
+        virtual VehicleType  getType() = 0;
         virtual ~Vehicle() {}
 };
 

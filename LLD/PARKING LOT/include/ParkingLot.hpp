@@ -1,6 +1,7 @@
 #ifndef PARKINGLOT_HPP
 #define PARKINGLOT_HPP
 
+#include "bits/stdc++.h"
 #include "Vehicle.hpp"
 using namespace std;
 
@@ -9,9 +10,9 @@ class ParkingLot{
         vector<vector<Vehicle*>> spot;
     public:
         ParkingLot();
-        void getAvailabelSpot(vheicleType);
-        bool bookAvailableSpot(vheicleType);
-        bool releseParkngSpot(i, vheicleType);
-}
+        void getAvailabelSpot();
+        bool bookAvailableSpot(Vehicle* type);
+        bool releseParkngSpot(int j, VehicleType type);
+};
 
 #endif
