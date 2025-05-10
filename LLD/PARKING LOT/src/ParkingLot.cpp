@@ -1,5 +1,4 @@
 #include "ParkingLot.hpp"
-using namesapce std;
 
 // TODO: Operator overloading
 ostream& operator<<(std::ostream& os, VehicleType type) {
@@ -13,49 +12,45 @@ ostream& operator<<(std::ostream& os, VehicleType type) {
 }
 
 ParkingLot::ParkingLot() {
-    spot = vector<vector<Vehicle*>> (3, vector<Vehicle*>(10, nullptr));
+    this->spot = vector<vector<Vehicle*>> (3, vector<Vehicle*>(10, nullptr));
 }
 
-ParkingLot::getAvailabelSpot(VehicleType type) {
+void ParkingLot::getAvailabelSpot() {
     for(int i=0; i<this->spot.size(); i++){
         for(int j=0; j<this->spot[i].size(); j++) {
-            cout<<spot[i][j].getName()<<"::";
-            cout<<spot[i][j].getType()<<"         ";
+            if(spot[i][j] != nullptr) {
+                cout<<spot[i][j]->getName()<<"::";
+                cout<<spot[i][j]->getType()<<"         ";
+            }else{
+                cout<<"*         ";
+            }
         }
-
         cout<<endl<<endl;
     }
 }
 
-ParkingLot::bookAvailableSpot(Vehicle type) {
-    int i=0;
-    if (type.getType() == VehicleType::Truck){
-        i=0;
-    }else if (){
-        i=1;
-    }else{
-        i=2;
-    }
+bool ParkingLot::bookAvailableSpot(Vehicle* vehicle) {
+    int i = (vehicle->getType() == VehicleType::Truck) ? 0 :
+            (vehicle->getType() == VehicleType::Car)   ? 1 : 2;
 
-    int j=0;
-
-    while(j<this->spot[i].size()){
-        if(spot[i][j] != nullptr){
-            spot[i][j] = type;
-            cout<<"Booked successfull\n\n";
+    for (int j = 0; j < this->spot[i].size(); ++j) {
+        if (spot[i][j] == nullptr) {
+            spot[i][j] = vehicle;
+            cout << "Booked successfully: " << vehicle->getName() << endl;
             return true;
         }
     }
 
-    cout<<"No space avaialabe, unsuccessfull\n\n";
+    cout << "No available spot for " << vehicle->getName() << endl;
+    delete vehicle; // avoid memory leak
     return false;
 }
 
-bool ParkingLot::releseParkngSpot(int j, vheicleType type) {
+bool ParkingLot::releseParkngSpot(int j, VehicleType type) {
     int i=0;
-    if (type.getType() == VehicleType::Truck){
+    if (type== VehicleType::Truck){
         i=0;
-    }else if (){
+    }else if (type == VehicleType::Car){
         i=1;
     }else{
         i=2;
