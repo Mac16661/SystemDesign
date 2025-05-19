@@ -6,18 +6,16 @@
 #include <vector>
 #include <string>
 #include <random>
+#include <iostream>
 
 class Stackoverflow{
-    std::vector<Post*> posts;
-    std::random_device rd;              // seed
-    std::mt19937 gen(rd());             // engine
-    std::uniform_int_distribution<int> dist(10000, 99999);  // inclusive range
+    public:
+        std::vector<Post*> posts;
 
-
-    void postQuestion(std::string question);
-    void answerQuestion(std::string answer, int questionID);
-    void commentOnAnswer(std::strign comment, int answerID);
-    void displayAllPosts();
+        void postQuestion(std::string question, std::string tag="unknown");
+        void answerQuestion(std::string answer, int questionID);
+        void commentOnAnswer(std::string comment, int postID, int answerID);
+        void displayAllPosts();
 };
 
 #endif

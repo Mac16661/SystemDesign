@@ -1,6 +1,7 @@
 #ifndef TAG_HPP
 #define TAG_HPP
 
+#include <string>
 
 class Tag{
     public:

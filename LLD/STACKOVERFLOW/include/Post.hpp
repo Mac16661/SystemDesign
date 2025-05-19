@@ -10,7 +10,7 @@
 
 class Post{
     public:
-    int id;
+        int id;
         Question question;
         std::vector<Tag> tags;
         std::vector<Answer*> answers;

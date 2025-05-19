@@ -3,7 +3,7 @@
 
 Post::Post(int id, const Question& q, const std::vector<Tag>& t) : id(id), question(q) {
     for(auto tag:t) {
-        tags.push_back(tag)
+        tags.push_back(tag);
     }
 };
 
@@ -22,7 +22,7 @@ void Post::displayPost() {
 
     // printing tags
     for(auto t:tags) {
-        std::cout<<t->tag<<std::endl;
+        std::cout<<t.tag<<std::endl;
     }
     std::cout<<"\n\n"<<std::endl;
 
@@ -30,7 +30,7 @@ void Post::displayPost() {
     for(auto a:answers) {
         std::cout<<a->id<<": "<<a->answer<<std::endl;
 
-        for(auto: c:comments) {
+        for(auto c:comments) {
             if(a->id == c->answerID) {
                 std::cout<<c->comment<<std::endl;
             }
